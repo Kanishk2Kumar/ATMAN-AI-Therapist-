@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Discover Lotus, Your Free Online Personal AI Therapist - Empowering Mental Well-Being. Experience Compassionate Guidance, Insights, and Support for Life's Challenges. Transform Struggles into Strengths with Lotus AI Therapy Today!" />
+    <meta property="og:image" content="/splashArt.jpg" />
+    <link rel="stylesheet" href="main.css" /> <!-- Ensure the path is correct -->
+    <link rel="manifest" href="/manifest.json" />
+    <title>Lotus - Your Free Online AI Therapist</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="lotus-logo.png" alt="Lotus AI Logo" class="logo" />
+            <button class="menu-btn">&#9776;</button>
+        </header>
+        
+        <div class="welcome-section">
+            <img src="meditation.png" alt="Meditation Illustration" class="hero-img" />
+            <h1>Hi, I'm Lotus - Your AI Therapist</h1>
+            <p>I am here to listen to your struggles.<br><strong>How do you feel today?</strong></p>
+        </div>
+        
+        <div class="chat-container">
+            <div class="chat-window" id="chat-window">
+                <!-- Chat messages will appear here -->
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type your message here..." />
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const chatWindow = document.getElementById('chat-window');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        function addMessageToChat(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', sender);
+            messageDiv.textContent = message;
+            chatWindow.appendChild(messageDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll to the bottom
+        }
+
+        sendBtn.addEventListener('click', async () => {
+            const userMessage = chatInput.value.trim();
+            if (userMessage) {
+                addMessageToChat('user', userMessage); // Add user message to chat
+                chatInput.value = ''; // Clear input field
+
+                // Send user message (prompt) to backend
+                try {
+                    const response = await fetch('/generate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ prompt: userMessage }),
+                    });
+
+                    const data = await response.json();
+                    const aiMessage = data.generatedText;
+
+                    // Add AI response to chat
+                    addMessageToChat('ai', aiMessage);
+                } catch (error) {
+                    console.error('Error:', error);
+                    addMessageToChat('ai', error.message); // Show error message
+                }
+            }
+        });
+
+        // Allow 'Enter' key to send messages
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                sendBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
