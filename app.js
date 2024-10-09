@@ -26,6 +26,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html')); // Ensure this file exists
 });
 
+// Route to render AI.html
+app.get('/AI', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'AI.html')); // Ensure this file exists
+});
+
 // Route to handle AI prompt
 app.post('/generate', async (req, res) => {
     try {
