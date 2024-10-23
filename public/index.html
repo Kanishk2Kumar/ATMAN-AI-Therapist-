@@ -101,17 +101,6 @@ min-height: 221px;}
     min-height: 421px;
 	}}
 	
-/**
-@font-face{font-family:slick;src:url(https://stgnghelpguide.wpengine.com/wp-content/themes/helpguide/dist/295183786cd8a1389865.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
-	
-	@font-face{font-family:Inter;src:url(https://stgnghelpguide.wpengine.com/wp-content/themes/helpguide/dist/ac03a6de9ea313009257.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
-	
-	@font-face{font-family:Inter;src:url(https://stgnghelpguide.wpengine.com/wp-content/themes/helpguide/dist/d4b5441320ecab87d64a.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
-	
-	@font-face{font-family:"Playfair Display";src:url(https://stgnghelpguide.wpengine.com/wp-content/themes/helpguide/dist/3d87e44d5fcfd361515a.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
-	
-	@font-face{font-family:"Playfair Display";src:url(https://stgnghelpguide.wpengine.com/wp-content/themes/helpguide/dist/96f94d9332d6360c0f88.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
-	**/
 	/**	@font-face{font-family:Inter;src:url(https://stgnghelpguide.wpengine.com/wp-content/themes/helpguide/dist/7249951440b8b2f3f6ba.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap} **/
 	.mejs-container {
     clear: both;
@@ -138,24 +127,70 @@ min-height: 221px;}
 
 <main id="home" class="site" data-template="home">
     <section id="Navbar" style="background-color: white; padding: 10px;">
-        <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="flex: 1;">
-                <a href="/" >
-                    <img src="./images/LogoNew.png" alt="Logo" style="height: 50px;">
-                </a>
-            </div>
-    
-            <div style="flex: 2; display: flex; justify-content: center; background-color: #fbf7f0; border-radius: 8px; padding-left: 0%;">
-                <a href="#" style="color: rgb(113, 107, 107); text-decoration: none; padding: 10px 20px; font-size: large;">Home</a>
-                <a href="#mission" style="color: rgb(113, 107, 107); text-decoration: none; padding: 10px 20px; font-size: large;">Our Mission</a>
-                <a href="#featured-topic" style="color: rgb(113, 107, 107); text-decoration: none; padding: 10px 20px; font-size: large;">Featured</a>
-            </div>
-    
-            <div style="flex: 1; text-align: right;">
-                <a href="/AI" style="color:#012f2c; text-decoration: none; padding: 10px 20px; background-color: #fcd961; border-radius: 5px;">Ask AI</a>
-            </div>
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 150px;">
+            <a href="/" >
+                <img src="./images/LogoNew.png" alt="Logo" style="height: 50px;">
+            </a>
         </div>
-    </section>
+
+        <div style="flex: 2; display: flex; justify-content: center; background-color: #fbf7f0; border-radius: 8px; padding-left: 0%; flex-wrap: wrap; min-width: 250px;">
+            <a href="#" style="color: rgb(113, 107, 107); text-decoration: none; padding: 10px 20px; font-size: large;">Home</a>
+            <a href="#mission" style="color: rgb(113, 107, 107); text-decoration: none; padding: 10px 20px; font-size: large;">Our Mission</a>
+            <a href="#featured-topic" style="color: rgb(113, 107, 107); text-decoration: none; padding: 10px 20px; font-size: large;">Featured</a>
+        </div>
+
+        <div style="flex: 1; text-align: right; min-width: 150px;">
+            <a href="/AI" style="color:#012f2c; text-decoration: none; padding: 10px 20px; background-color: #fcd961; border-radius: 5px; font-size: large;">Ask AI</a>
+        </div>
+    </div>
+
+    <style>
+        @media (max-width: 768px) {
+            #Navbar .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #Navbar div {
+                text-align: center;
+                padding: 5px 0;
+            }
+
+            #Navbar a {
+                font-size: medium;
+            }
+
+            #Navbar a[href="/AI"] {
+                padding: 8px 15px;
+                font-size: medium;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #Navbar .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #Navbar a {
+                font-size: small;
+                padding: 5px 10px;
+            }
+
+            #Navbar a[href="/AI"] {
+                font-size: small;
+                padding: 6px 12px;
+                background-color: #fcd961; /* Ensure button color remains */
+                border-radius: 5px;
+            }
+
+            #Navbar img {
+                height: 40px;
+            }
+        }
+    </style>
+</section>
     
 <section id="hero" class="section s-ivory s-center-sm s-grain">
     <div class="section-wrapper">
@@ -164,10 +199,10 @@ min-height: 221px;}
                 <div class="col-10">
                     <div class="section-content">
                         <h1 class="section-title">
-                            Your <em>trusted guide</em> to<br> mental health &amp; wellness</h1>
+                            Your <em>reliable partner</em> in<br> mental health and well-being</h1>
 
                         <p class="section-text">
-                            Start improving your mental health and well-being today. HelpGuide.org shows you how.                        </p>
+                            Start improving your mental health and well-being today. Atman shows you how.                        </p>
 
                         <a href="/AI" class="btn btn-primary" target="_self" aria-label="Learn more"><span>AI Therapist</span>
 <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
